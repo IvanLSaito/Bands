@@ -2,7 +2,6 @@ C:\C# projects\Bands\Bands\Bands\bin\Debug\netcoreapp2.1\Bands.deps.json
 C:\C# projects\Bands\Bands\Bands\bin\Debug\netcoreapp2.1\Bands.runtimeconfig.json
 C:\C# projects\Bands\Bands\Bands\bin\Debug\netcoreapp2.1\Bands.runtimeconfig.dev.json
 C:\C# projects\Bands\Bands\Bands\bin\Debug\netcoreapp2.1\Bands.dll
-C:\C# projects\Bands\Bands\Bands\obj\Debug\netcoreapp2.1\Bands.csprojAssemblyReference.cache
 C:\C# projects\Bands\Bands\Bands\obj\Debug\netcoreapp2.1\Bands.csproj.CoreCompileInputs.cache
 C:\C# projects\Bands\Bands\Bands\obj\Debug\netcoreapp2.1\Bands.RazorAssemblyInfo.cache
 C:\C# projects\Bands\Bands\Bands\obj\Debug\netcoreapp2.1\Bands.RazorAssemblyInfo.cs
@@ -12,3 +11,4 @@ C:\C# projects\Bands\Bands\Bands\obj\Debug\netcoreapp2.1\Bands.RazorTargetAssemb
 C:\C# projects\Bands\Bands\Bands\bin\Debug\netcoreapp2.1\Bands.pdb
 C:\C# projects\Bands\Bands\Bands\obj\Debug\netcoreapp2.1\Bands.dll
 C:\C# projects\Bands\Bands\Bands\obj\Debug\netcoreapp2.1\Bands.pdb
+C:\C# projects\Bands\Bands\Bands\obj\Debug\netcoreapp2.1\Bands.csprojAssemblyReference.cache

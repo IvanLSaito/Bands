@@ -1,6 +1,6 @@
 ﻿namespace Bands.Models
 {
-    public class BandsItem
+    public class Band
     {
 
         public int Id

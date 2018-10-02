@@ -32,7 +32,7 @@ namespace Bands
             services.AddMvc();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Api Cotxes", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Api Bands", Version = "v1" });
             });
         }
 
@@ -49,7 +49,7 @@ namespace Bands
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Cotxes");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api Bands");
                 c.RoutePrefix = string.Empty;
             });
 

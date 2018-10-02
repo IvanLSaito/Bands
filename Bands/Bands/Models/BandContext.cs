@@ -12,6 +12,6 @@ namespace Bands.Models
         {
 
         }
-        public DbSet<BandsItem> BandItems { get; set; }
+        public DbSet<Band> Band { get; set; }
     }
 }

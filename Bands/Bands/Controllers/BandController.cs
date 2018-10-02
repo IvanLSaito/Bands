@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Bands.Models;
 
 namespace Bands.Controllers
 {
-    [Produces("application/json")]
     [Route("api/[controller]")]
     public class BandController : Controller
     {
@@ -16,35 +16,35 @@ namespace Bands.Controllers
         public BandController(BandContext context)
         {
             _context = context;
-            if (_context.BandItems.Count() == 0)
+            if (_context.Band.Count() == 0)
             {
-                _context.BandItems.Add(new BandsItem { BandName = "ROTNS", FormationYear = 2008, Members = 5, Style = "HxC" });
+                _context.Band.Add(new Band { BandName = "ROTNS", FormationYear = 2008, Members = 5, Style = "HxC" });
                 _context.SaveChanges();
             }
         }
 
         [HttpGet]
-        public IEnumerable<BandsItem> GetAll()
+        public IEnumerable<Band> GetAll()
         {
-            return _context.BandItems.ToList();
+            return _context.Band.ToList();
         }
 
         [HttpGet("{id}", Name = "GetBand")]
         public IActionResult GetById(int id)
         {
-            var item = _context.BandItems.FirstOrDefault(t => t.Id == id);
+            var item = _context.Band.FirstOrDefault(t => t.Id == id);
             if (item == null)
                 return NotFound();
             return new ObjectResult(item);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody]BandsItem item)
+        public IActionResult Update(int id, [FromBody]Band item)
         {
             if (item == null || item.Id != id)
                 return BadRequest();
 
-            var band = _context.BandItems.FirstOrDefault(t => t.Id == id);
+            var band = _context.Band.FirstOrDefault(t => t.Id == id);
             if (band == null)
                 return NotFound();
 
@@ -52,7 +52,7 @@ namespace Bands.Controllers
             band.Style = item.Style;
             band.FormationYear = item.FormationYear;
             band.Members = item.Members;
-            _context.BandItems.Update(band);
+            _context.Band.Update(band);
             _context.SaveChanges();
             return new NoContentResult();
         }
@@ -60,11 +60,11 @@ namespace Bands.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var band = _context.BandItems.FirstOrDefault(t => t.Id == id);
+            var band = _context.Band.FirstOrDefault(t => t.Id == id);
             if (band == null)
                 return NotFound();
 
-            _context.BandItems.Remove(band);
+            _context.Band.Remove(band);
             _context.SaveChanges();
             return new NoContentResult();
 
