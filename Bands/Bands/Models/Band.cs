@@ -20,7 +20,7 @@
             set;
         }
 
-        public int Members
+        public byte Members
         {
             get;
             set;

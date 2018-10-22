@@ -27,7 +27,7 @@ namespace Bands
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BandContext>(options => 
-               options.UseSqlServer("Data Source=.\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc();
             services.AddSwaggerGen(c =>
