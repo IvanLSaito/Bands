@@ -48,6 +48,8 @@ namespace Bands.Controllers
             if (band == null)
                 return NotFound();
 
+            try
+            {
             band.BandName = item.BandName;
             band.Style = item.Style;
             band.FormationYear = item.FormationYear;
@@ -55,6 +57,22 @@ namespace Bands.Controllers
             _context.Band.Update(band);
             _context.SaveChanges();
             return new NoContentResult();
+            }catch(Exception e)
+            {
+                return BadRequest();
+            }
+        }
+    
+        [HttpPost]
+        public IActionResult Create([FromBody]Band item)
+        {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+            _context.Band.Add(item);
+            _context.SaveChanges();
+            return CreatedAtRoute("GetBand", new { id = item.Id }, item);
         }
 
         [HttpDelete("{id}")]
