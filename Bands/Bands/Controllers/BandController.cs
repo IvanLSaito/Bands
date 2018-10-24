@@ -8,6 +8,7 @@ using Bands.Models;
 
 namespace Bands.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     public class BandController : Controller
     {
@@ -33,9 +34,16 @@ namespace Bands.Controllers
         public IActionResult GetById(int id)
         {
             var item = _context.Band.FirstOrDefault(t => t.Id == id);
+            try
+            {
             if (item == null)
                 return NotFound();
             return new ObjectResult(item);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPut("{id}")]
@@ -57,7 +65,7 @@ namespace Bands.Controllers
             _context.Band.Update(band);
             _context.SaveChanges();
             return new NoContentResult();
-            }catch(Exception e)
+            }catch
             {
                 return BadRequest();
             }
@@ -70,9 +78,16 @@ namespace Bands.Controllers
             {
                 return BadRequest();
             }
+            try
+            {
             _context.Band.Add(item);
             _context.SaveChanges();
             return CreatedAtRoute("GetBand", new { id = item.Id }, item);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         [HttpDelete("{id}")]
@@ -82,10 +97,16 @@ namespace Bands.Controllers
             if (band == null)
                 return NotFound();
 
+            try
+            {
             _context.Band.Remove(band);
             _context.SaveChanges();
             return new NoContentResult();
-
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }
