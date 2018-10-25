@@ -40,8 +40,9 @@ namespace Bands.Controllers
                 return NotFound();
             return new ObjectResult(item);
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine("Something happenned: {0}", e);
                 return BadRequest();
             }
         }
@@ -65,8 +66,10 @@ namespace Bands.Controllers
             _context.Band.Update(band);
             _context.SaveChanges();
             return new NoContentResult();
-            }catch
+            }
+            catch (Exception e)
             {
+                Console.WriteLine("Something happenned: {0}", e);
                 return BadRequest();
             }
         }
@@ -84,8 +87,9 @@ namespace Bands.Controllers
             _context.SaveChanges();
             return CreatedAtRoute("GetBand", new { id = item.Id }, item);
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine("Something happenned: {0}", e);
                 return BadRequest();
             }
         }
@@ -103,8 +107,9 @@ namespace Bands.Controllers
             _context.SaveChanges();
             return new NoContentResult();
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine("Something happenned: {0}", e);
                 return BadRequest();
             }
         }
